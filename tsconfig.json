@@ -21,10 +21,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@project/app/modules/*": ["src/modules/*"],
-      "@project/server/data/*": ["server/src/json/*"],
-      "@medules"
+      "@/*": ["./*"]
     }
   },
   "include": [
