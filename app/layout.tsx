@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import QueryProvider from "@/components/QueryProvider";
+import Navbar from "@/components/nav/Navbar";
 
 const inter = Space_Grotesk({ subsets: ["latin"] });
 
@@ -29,7 +30,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryProvider>{children}</QueryProvider>
+          <QueryProvider>
+            <main className="flex flex-col max-w-7xl mx-auto min-h-screen space-y-10 p-5">
+              <Navbar />
+              <div className="w-full flex-1">{children}</div>
+            </main>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>
