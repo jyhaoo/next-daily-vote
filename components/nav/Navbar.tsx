@@ -3,6 +3,7 @@ import { RocketIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useUser } from "@/lib/hook";
 import LoginForm from "./LoginForm";
+import Profile from "./Profile";
 
 export default function Navbar() {
   return (
@@ -28,7 +29,4 @@ const RenderProfile = () => {
   } else {
     <LoginForm />;
   }
-
-  // if data, render profile
-  // else render signup
 };
