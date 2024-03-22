@@ -2,6 +2,7 @@
 import { RocketIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { useUser } from "@/lib/hook";
+import LoginForm from "./LoginForm";
 
 export default function Navbar() {
   return (
@@ -24,5 +25,10 @@ const RenderProfile = () => {
 
   if (data?.user?.id) {
     return <Profile user={data?.user} />;
+  } else {
+    <LoginForm />;
   }
+
+  // if data, render profile
+  // else render signup
 };
