@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import ListVoteLoading from "@/components/ListVoteLoading";
+import ListVote from "@/components/ListVote";
 import { listActiveVotes } from "@/lib/actions/vote";
 
 export default function Home() {
@@ -19,4 +20,5 @@ const ActiveVote = async () => {
   if (!votes?.length) {
     return <h1>No vote yet 😅</h1>;
   }
+  return <ListVote votes={votes} />;
 };
