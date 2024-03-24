@@ -2,12 +2,18 @@ import { GearIcon, PlusIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Logout from "./Logout";
 import { User } from "@supabase/supabase-js";
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import Link from "next/link";
 
 export default function Profile({ user }: { user: User | undefined }) {
+  console.log("User profile: " + user?.user_metadata?.avatar_url);
   return (
     <>
-      Profile
       <Popover>
         <PopoverTrigger asChild id="close-popover">
           <Image
