@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 
 export default function Profile({ user }: { user: User | undefined }) {
-  console.log("User profile: " + user?.user_metadata?.avatar_url);
   return (
     <>
       <Popover>
