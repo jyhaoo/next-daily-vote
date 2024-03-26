@@ -177,10 +177,10 @@ export interface Database {
     Functions: {
       create_vote: {
         Args: {
+          description: string;
           options: Json;
           title: string;
           end_date: string;
-          description: string;
         };
         Returns: string;
       };

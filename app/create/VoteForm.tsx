@@ -93,6 +93,7 @@ export default function VoteForm() {
       vote_options[option] = 0;
     });
     const insertData = { ...data, vote_options };
+    console.log("Insert Data: " + JSON.stringify(insertData));
     toast.promise(createVote(insertData), {
       loading: "creating...",
       success: "Successfully create a vote",

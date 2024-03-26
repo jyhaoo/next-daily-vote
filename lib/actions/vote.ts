@@ -1,8 +1,9 @@
 "use server";
 
-import createSupabaseServer from "../supabase/server";
 import { redirect } from "next/navigation";
+import createSupabaseServer from "../supabase/server";
 import { Json } from "../types/supabase";
+import { revalidatePath } from "next/cache";
 
 export async function listActiveVotes() {
   const supabase = await createSupabaseServer();
@@ -18,7 +19,7 @@ export async function listExpiredVotes() {
   const supabase = await createSupabaseServer();
 
   return supabase
-    .from("votes")
+    .from("vote")
     .select("*,users(*)")
     .filter("end_date", "lte", new Date().toISOString())
     .order("created_at", { ascending: true });
@@ -44,4 +45,37 @@ export async function createVote(data: {
   } else {
     redirect("/vote/" + voteId);
   }
+}
+
+export async function updateVotePath(id: string) {
+  revalidatePath("/vote/" + id);
+}
+
+export async function getVoteById(id: string) {
+  const suapbase = await createSupabaseServer();
+  return await suapbase.from("vote").select("*").eq("id", id).single();
+}
+
+export async function updateVoteById(
+  data: {
+    end_date: Date;
+    description?: string;
+    title: string;
+  },
+  voteId: string
+) {
+  const suapbase = await createSupabaseServer();
+  const { error, data: vote } = await suapbase
+    .from("vote")
+    .update({
+      title: data.title,
+      end_date: data.end_date.toISOString(),
+      description: data.description,
+    })
+    .eq("id", voteId);
+  if (error) {
+    throw error.message;
+  }
+  revalidatePath("/vote/" + voteId);
+  return redirect("/vote/" + voteId);
 }
