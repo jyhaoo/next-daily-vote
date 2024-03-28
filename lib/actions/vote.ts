@@ -33,13 +33,6 @@ export async function createVote(data: {
 }) {
   const supabase = await createSupabaseServer();
 
-  // const { data: voteId, error } = await supabase.rpc("create_vote", {
-  //   options: data.vote_options,
-  //   title: data.title,
-  //   end_date: new Date(data.end_date).toISOString(),
-  //   description: data.description || "",
-  // });
-
   const { data: voteId, error } = await supabase.rpc("create_vote", {
     options: data.vote_options,
     title: data.title,
