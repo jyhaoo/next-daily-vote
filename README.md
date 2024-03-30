@@ -11,8 +11,8 @@ DECLARE
   new_id integer;
 
 BEGIN
-  INSERT INTO vote(id, description, end_date)
-  VALUES (new_id, description, end_date)
+  INSERT INTO vote(description, end_date)
+  VALUES (description, end_date)
   RETURNING id INTO new_id;
 
   INSERT INTO vote_options(options, vote_id)
