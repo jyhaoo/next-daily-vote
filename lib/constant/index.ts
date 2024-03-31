@@ -22,3 +22,6 @@ export const rings = [
 ];
 
 export const emojis = ["🤔", "🤖", "🔔", "🎷", "📺", "🎨"];
+
+export const DEFAULT_DESCRIPTION =
+  "Cast your vote now and see live updates on the poll results, powered by the real-time capabilities of Supabase database integration in our web ap";
