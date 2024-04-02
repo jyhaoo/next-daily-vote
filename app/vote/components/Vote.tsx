@@ -1,5 +1,5 @@
 "use client";
-import { createSupabaseBrower } from "@/lib/supabase/client";
+import { createSupabaseBrowser } from "@/lib/supabase/client";
 import { cn, getHightValueObjectKey } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import React, { useEffect, useMemo } from "react";
@@ -11,7 +11,7 @@ import VoteLoading from "./VoteLoading";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function Vote({ id }: { id: string }) {
-  const supabase = createSupabaseBrower();
+  const supabase = createSupabaseBrowser();
   const queryClient = useQueryClient();
   const { data, isFetching } = useGetVote(id);
 
