@@ -11,6 +11,7 @@ import VoteLoading from "./VoteLoading";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function Vote({ id }: { id: string }) {
+  console.log("Vote page");
   const supabase = createSupabaseBrowser();
   const queryClient = useQueryClient();
   const { data, isFetching } = useGetVote(id);

@@ -5,16 +5,18 @@ import VoteWrapper from "../components/VoteWrapper";
 import Info from "../components/Info";
 import { DEFAULT_DESCRIPTION } from "@/lib/constant";
 
-export async function generateStaticParams() {
-  const supabase = await createSupabaseBrowser();
-
-  const { data: votes } = await supabase
-    .from("vote")
-    .select("id")
-    .filter("end_date", "gte", new Date().toISOString())
-    .limit(10);
-  return votes as any;
-}
+// export async function generateStaticParams() {
+//   const supabase = await createSupabaseBrowser();
+//   console.log("Generate static params");
+//   const { data: recievedVotes } = await supabase
+//     .from("vote")
+//     .select("id")
+//     .filter("end_date", "gte", new Date().toISOString())
+//     .limit(10);
+//   const voteIds = ["3", "4", "5", "6", "7"];
+//   const votes = voteIds.map((id) => ({ params: { id } }));
+//   return votes as any;
+// }
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const supabase = await createSupabaseBrowser();
@@ -55,6 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     .select("*")
     .eq("id", params.id)
     .single();
+  console.log("Vote: " + JSON.stringify(vote));
 
   if (!vote) {
     return redirect("/404");

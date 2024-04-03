@@ -13,7 +13,7 @@ export default function VoteWrapper({ id }: { id: string }) {
   useComment(id);
 
   if (isFetching) {
-    return <div className=" h-70vh"></div>;
+    return <div className=" h-70vh" />;
   }
 
   if (!data?.user?.id) {

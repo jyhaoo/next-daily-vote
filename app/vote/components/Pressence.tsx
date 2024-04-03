@@ -4,7 +4,7 @@ import { createSupabaseBrowser } from "@/lib/supabase/client";
 import { PersonIcon } from "@radix-ui/react-icons";
 import React, { useEffect, useState } from "react";
 
-export default function TePressencest({ id }: { id: string }) {
+export default function Pressences({ id }: { id: string }) {
   const supabase = createSupabaseBrowser();
   const { data } = useUser();
   const [onlineUsers, setOnlineUsers] = useState(0);
