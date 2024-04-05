@@ -5,7 +5,6 @@ import { IComment } from "../types";
 
 export function useGetVote(id: string) {
   const supabase = createSupabaseBrowser();
-  console.log("Use get vote");
   return useQuery({
     queryKey: ["vote-" + id],
     queryFn: async () => {
@@ -14,7 +13,6 @@ export function useGetVote(id: string) {
         .select("*,vote_options(*),vote_log(*)")
         .eq("id", id)
         .single();
-      console.log("Vote options: " + JSON.stringify(data));
       const voteOptions = sortObject(
         data?.vote_options?.options as { [key: string]: number }
       );
