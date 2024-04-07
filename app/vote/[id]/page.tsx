@@ -57,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     .select("*")
     .eq("id", params.id)
     .single();
-
+  console.log("Vote: " + JSON.stringify(vote));
   if (!vote) {
     return redirect("/404");
   }
