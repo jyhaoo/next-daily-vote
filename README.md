@@ -1,5 +1,7 @@
 # Daily Vote
 
+Create and vote for daily votes
+
 ## Supabase Functions
 
 ```
